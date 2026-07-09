@@ -165,6 +165,7 @@ model Workspace {
 
   members  WorkspaceMember[]
   projects Project[]
+  invites  Invite[]
 
   @@map("workspaces")
 }
@@ -271,7 +272,8 @@ model Deployment {
 
   project  Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
   user     User    @relation(fields: [userId], references: [id])
-  rollback Deployment? @relation("RollbackRelation", fields: [rollbackToId], references: [id])
+  rollback  Deployment? @relation("RollbackRelation", fields: [rollbackToId], references: [id])
+  rollbacks Deployment[] @relation("RollbackRelation")
 
   createdAt DateTime @default(now())
   completedAt DateTime?
