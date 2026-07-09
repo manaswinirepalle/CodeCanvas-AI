@@ -3,11 +3,16 @@ const nextConfig = {
   reactStrictMode: true,
   transpilePackages: ['@codecanvas/shared'],
   images: {
-    domains: ['avatars.githubusercontent.com', 'lh3.googleusercontent.com'],
+    remotePatterns: [
+      { protocol: 'https', hostname: 'avatars.githubusercontent.com' },
+      { protocol: 'https', hostname: 'lh3.googleusercontent.com' },
+      { protocol: 'https', hostname: '*.onrender.com' },
+    ],
     formats: ['image/avif', 'image/webp'],
   },
   experimental: {
     optimizePackageImports: ['lucide-react', 'framer-motion'],
+    outputFileTracingRoot: process.env.NODE_ENV === 'production' ? undefined : undefined,
   },
   headers: async () => [
     {

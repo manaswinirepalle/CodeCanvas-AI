@@ -17,6 +17,9 @@
     "docker:dev": "docker compose -f docker/docker-compose.dev.yml up",
     "docker:prod": "docker compose -f docker/docker-compose.prod.yml up",
     "setup": "pnpm install && pnpm run db:generate && pnpm run db:push",
+    "render:build": "pnpm install --frozen-lockfile && pnpm run build",
+    "render:start:api": "node apps/api/dist/main.js",
+    "render:start:web": "pnpm --filter @codecanvas/web run start",
     "commit": "cz"
   },
   "engines": {

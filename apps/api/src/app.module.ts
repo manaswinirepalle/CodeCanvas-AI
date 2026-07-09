@@ -15,6 +15,7 @@ import { FilesModule } from './modules/files/files.module';
 import { NotificationsModule } from './modules/notifications/notifications.module';
 import { WorkspaceModule } from './modules/workspace/workspace.module';
 import { SearchModule } from './modules/search/search.module';
+import { HealthModule } from './modules/health/health.module';
 
 @Module({
   imports: [
@@ -47,6 +48,7 @@ import { SearchModule } from './modules/search/search.module';
     NotificationsModule,
     WorkspaceModule,
     SearchModule,
+    HealthModule,
   ],
   providers: [
     {
