@@ -34,7 +34,7 @@ export class ProjectsController {
     },
     @CurrentUser('id') userId: string,
   ) {
-    return this.projectsService.create({ ...body, type: body.type as any, ownerId: userId });
+    return this.projectsService.create({ ...body, type: body.type as any, framework: body.framework as any, ownerId: userId });
   }
 
   @Get()

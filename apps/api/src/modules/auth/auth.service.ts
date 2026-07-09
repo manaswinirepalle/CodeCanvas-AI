@@ -97,7 +97,7 @@ export class AuthService {
       where: { id: userId },
       include: {
         accounts: true,
-        subscriptions: true,
+        subscription: true,
       },
     });
 

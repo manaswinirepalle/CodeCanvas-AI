@@ -21,7 +21,7 @@ export class UsersService {
         lastLoginAt: true,
         createdAt: true,
         accounts: { select: { provider: true } },
-        subscriptions: true,
+        subscription: true,
       },
     });
 
