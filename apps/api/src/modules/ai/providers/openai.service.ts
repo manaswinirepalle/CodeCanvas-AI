@@ -21,7 +21,7 @@ export class OpenAiService {
     const modelName = model || this.config.get('OPENAI_MODEL', 'gpt-4-turbo');
 
     const response = await this.client.chat.completions.create({
-      model: modelName,
+      model: modelName as string,
       messages: [
         { role: 'system', content: systemPrompt },
         { role: 'user', content: prompt },
@@ -46,7 +46,7 @@ export class OpenAiService {
     const modelName = model || this.config.get('OPENAI_MODEL', 'gpt-4-turbo');
 
     const response = await this.client.chat.completions.create({
-      model: modelName,
+      model: modelName as string,
       messages,
       temperature: 0.7,
       max_tokens: 4096,
