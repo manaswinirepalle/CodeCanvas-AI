@@ -1,40 +1,26 @@
-# CodeCanvas AI — Render Blueprint
-# Docs: https://render.com/docs/blueprint-spec
-
 databases:
   - name: codecanvas-db
     databaseName: codecanvas
     user: codecanvas
     plan: free
     region: oregon
-    ipAllowList: []
 
 services:
-  # ─── Backend API ──────────────────────────────────────
   - type: web
     name: codecanvas-api
     env: node
     region: oregon
     plan: free
-    rootDir: .
-    buildCommand: |
-      corepack enable &&
-      pnpm install --frozen-lockfile &&
-      pnpm --filter @codecanvas/database run generate &&
-      pnpm run build --filter @codecanvas/api
+    buildCommand: corepack enable && pnpm install --frozen-lockfile && pnpm --filter @codecanvas/database run generate && pnpm --filter @codecanvas/api run build
     startCommand: node apps/api/dist/main.js
     healthCheckPath: /health
     envVars:
       - key: NODE_ENV
         value: production
-      - key: PORT
-        value: 4000
       - key: DATABASE_URL
         fromDatabase:
           name: codecanvas-db
           property: connectionString
-      - key: REDIS_URL
-        value: redis://red-cr9k5e3v0jms73agoi1g:6379
       - key: JWT_SECRET
         generateValue: true
       - key: JWT_EXPIRES_IN
@@ -51,25 +37,14 @@ services:
         value: 100
       - key: OPENAI_API_KEY
         sync: false
-      - key: OPENAI_MODEL
-        value: gpt-4-turbo
-      - key: STRIPE_SECRET_KEY
-        sync: false
-      - key: STRIPE_WEBHOOK_SECRET
-        sync: false
 
-  # ─── Frontend Web ─────────────────────────────────────
   - type: web
     name: codecanvas-web
     env: node
     region: oregon
     plan: free
-    rootDir: .
-    buildCommand: |
-      corepack enable &&
-      pnpm install --frozen-lockfile &&
-      pnpm run build --filter @codecanvas/web
-    startCommand: pnpm run start --filter @codecanvas/web
+    buildCommand: corepack enable && pnpm install --frozen-lockfile && pnpm --filter @codecanvas/web run build
+    startCommand: pnpm --filter @codecanvas/web run start
     envVars:
       - key: NODE_ENV
         value: production
