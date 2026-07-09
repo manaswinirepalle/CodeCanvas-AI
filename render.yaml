@@ -11,7 +11,7 @@ services:
     env: node
     region: oregon
     plan: free
-    buildCommand: corepack enable && pnpm install --frozen-lockfile && pnpm --filter @codecanvas/database run generate && pnpm --filter @codecanvas/api run build
+    buildCommand: corepack enable && pnpm install --frozen-lockfile && pnpm run build
     startCommand: node apps/api/dist/main.js
     healthCheckPath: /health
     envVars:
@@ -43,7 +43,7 @@ services:
     env: node
     region: oregon
     plan: free
-    buildCommand: corepack enable && pnpm install --frozen-lockfile && pnpm --filter @codecanvas/web run build
+    buildCommand: corepack enable && pnpm install --frozen-lockfile && pnpm run build
     startCommand: pnpm --filter @codecanvas/web run start
     envVars:
       - key: NODE_ENV

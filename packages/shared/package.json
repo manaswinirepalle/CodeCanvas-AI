@@ -5,6 +5,7 @@
   "main": "./src/index.ts",
   "types": "./src/index.ts",
   "scripts": {
+    "build": "echo 'noop'",
     "lint": "echo 'noop'",
     "clean": "rm -rf .turbo node_modules"
   },
