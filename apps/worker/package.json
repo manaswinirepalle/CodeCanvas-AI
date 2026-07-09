@@ -1,0 +1,22 @@
+{
+  "name": "@codecanvas/worker",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "tsx watch src/main.ts",
+    "build": "tsc",
+    "start": "node dist/main",
+    "lint": "echo 'noop'",
+    "clean": "rm -rf dist .turbo node_modules"
+  },
+  "dependencies": {
+    "@codecanvas/database": "workspace:*",
+    "@codecanvas/shared": "workspace:*",
+    "bull": "^4.12.0",
+    "ioredis": "^5.4.0"
+  },
+  "devDependencies": {
+    "tsx": "^4.11.0",
+    "typescript": "^5.5.0"
+  }
+}

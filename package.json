@@ -1,0 +1,34 @@
+{
+  "name": "codecanvas-ai",
+  "version": "1.0.0",
+  "private": true,
+  "description": "From Prompt to Production — AI-powered software development platform",
+  "scripts": {
+    "dev": "turbo run dev --parallel",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json}\"",
+    "test": "turbo run test",
+    "clean": "turbo run clean",
+    "db:generate": "pnpm --filter @codecanvas/database run generate",
+    "db:push": "pnpm --filter @codecanvas/database run push",
+    "db:migrate": "pnpm --filter @codecanvas/database run migrate",
+    "db:seed": "pnpm --filter @codecanvas/database run seed",
+    "docker:dev": "docker compose -f docker/docker-compose.dev.yml up",
+    "docker:prod": "docker compose -f docker/docker-compose.prod.yml up",
+    "setup": "pnpm install && pnpm run db:generate && pnpm run db:push",
+    "commit": "cz"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  },
+  "packageManager": "pnpm@9.1.0",
+  "devDependencies": {
+    "@commitlint/cli": "^19.3.0",
+    "@commitlint/config-conventional": "^19.2.2",
+    "prettier": "^3.3.0",
+    "turbo": "^2.0.0",
+    "typescript": "^5.5.0"
+  }
+}
